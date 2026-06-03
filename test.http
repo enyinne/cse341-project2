@@ -10,3 +10,58 @@ Content-Type: application/json
   "company": "Tech Ltd",
   "jobTitle": "Developer"
 }
+
+###
+
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "Finish Project 2",
+  "description": "Complete Week 3 CRUD assignment",
+  "status": "pending",
+  "priority": "high"
+}
+
+###
+
+GET http://localhost:3000/tasks
+
+###
+
+GET http://localhost:3000/contacts
+
+###
+
+PUT http://localhost:3000/contacts/6a1f66d2b0a25f4fcec513c4
+Content-Type: application/json
+
+{
+  "firstName": "Jane Updated",
+  "lastName": "Doe",
+  "email": "janeupdated@example.com",
+  "phone": "08012345678",
+  "address": "Lagos",
+  "company": "Tech Ltd",
+  "jobTitle": "Senior Developer"
+}
+
+###
+
+DELETE http://localhost:3000/contacts/6a1f66d2b0a25f4fcec513c4
+
+###
+
+PUT http://localhost:3000/tasks/6a1fb3d04b7055c86c5ecac8
+Content-Type: application/json
+
+{
+  "title": "Finish Project 2 Updated",
+  "description": "Week 3 CRUD fully completed",
+  "status": "completed",
+  "priority": "high"
+}
+
+###
+
+DELETE http://localhost:3000/tasks/6a1fb3d04b7055c86c5ecac8
