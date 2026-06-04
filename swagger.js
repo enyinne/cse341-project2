@@ -10,12 +10,7 @@ const swaggerDefinition = {
   },
   servers: [
   {
-    url: "http://localhost:3000",
-    description: "Local server"
-  },
-  {
-    url: "https://cse341-project2-htyh.onrender.com",
-    description: "Production server"
+    url: "https://cse341-project2-htyh.onrender.com"
   }
 ],
 };
