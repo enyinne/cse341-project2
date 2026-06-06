@@ -31,9 +31,11 @@ res.status(500).json({ message: error.message });
 // CREATE task
 const createTask = async (req, res) => {
 try {
-const { title } = req.body;
+console.log("BODY RECEIVED:", req.body);
 
 ```
+const { title } = req.body;
+
 if (!title) {
   return res.status(400).json({
     message: "Title is required"
@@ -46,9 +48,14 @@ res.status(201).json(task);
 ```
 
 } catch (error) {
+console.error("CREATE TASK ERROR:", error);
+
+```
 res.status(400).json({
-message: error.message
+  message: error.message
 });
+```
+
 }
 };
 
