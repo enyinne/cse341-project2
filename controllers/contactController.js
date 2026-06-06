@@ -38,9 +38,15 @@ const createContact = async (req, res) => {
 
     const contact = await Contact.create(req.body);
 
-    res.status(201).json(contact);
+    return res.status(201).json({
+      message: "Contact created successfully",
+      contact
+    });
+
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({
+      message: error.message
+    });
   }
 };
 
@@ -67,9 +73,15 @@ const updateContact = async (req, res) => {
       });
     }
 
-    res.status(200).json(contact);
+    return res.status(200).json({
+      message: "Contact updated successfully",
+      contact
+    });
+
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    return res.status(400).json({
+      message: error.message
+    });
   }
 };
 

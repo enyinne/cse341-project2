@@ -43,16 +43,20 @@ const createTask = async (req, res) => {
 
     const task = await Task.create(req.body);
 
-    res.status(201).json(task);
+    return res.status(201).json({
+      message: "Task created successfully",
+      task
+    });
 
   } catch (error) {
     console.error("CREATE TASK ERROR:", error);
 
-    res.status(400).json({
+    return res.status(400).json({
       message: error.message
     });
   }
 };
+
 // UPDATE task
 const updateTask = async (req, res) => {
 try {
@@ -80,7 +84,10 @@ if (!task) {
   });
 }
 
-res.status(200).json(task);
+res.status(200).json({
+  message: "Task updated successfully",
+  task
+});  
 
 } catch (error) {
 res.status(400).json({
