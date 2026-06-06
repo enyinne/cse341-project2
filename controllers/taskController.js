@@ -15,13 +15,13 @@ const getTaskById = async (req, res) => {
 try {
 const task = await Task.findById(req.params.id);
 
-```
+
 if (!task) {
   return res.status(404).json({ message: "Task not found" });
 }
 
 res.status(200).json(task);
-```
+
 
 } catch (error) {
 res.status(500).json({ message: error.message });
@@ -30,41 +30,35 @@ res.status(500).json({ message: error.message });
 
 // CREATE task
 const createTask = async (req, res) => {
-try {
-console.log("BODY RECEIVED:", req.body);
+  try {
+    console.log("BODY RECEIVED:", req.body);
 
-```
-const { title } = req.body;
+    const { title } = req.body;
 
-if (!title) {
-  return res.status(400).json({
-    message: "Title is required"
-  });
-}
+    if (!title) {
+      return res.status(400).json({
+        message: "Title is required"
+      });
+    }
 
-const task = await Task.create(req.body);
+    const task = await Task.create(req.body);
 
-res.status(201).json(task);
-```
+    res.status(201).json(task);
 
-} catch (error) {
-console.error("CREATE TASK ERROR:", error);
+  } catch (error) {
+    console.error("CREATE TASK ERROR:", error);
 
-```
-res.status(400).json({
-  message: error.message
-});
-```
-
-}
+    res.status(400).json({
+      message: error.message
+    });
+  }
 };
-
 // UPDATE task
 const updateTask = async (req, res) => {
 try {
 const { title } = req.body;
 
-```
+
 if (!title) {
   return res.status(400).json({
     message: "Title is required"
@@ -87,7 +81,6 @@ if (!task) {
 }
 
 res.status(200).json(task);
-```
 
 } catch (error) {
 res.status(400).json({
@@ -101,7 +94,7 @@ const deleteTask = async (req, res) => {
 try {
 const task = await Task.findByIdAndDelete(req.params.id);
 
-```
+
 if (!task) {
   return res.status(404).json({
     message: "Task not found"
@@ -111,7 +104,7 @@ if (!task) {
 res.status(200).json({
   message: "Task deleted successfully"
 });
-```
+
 
 } catch (error) {
 res.status(500).json({
