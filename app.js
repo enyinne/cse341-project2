@@ -1,26 +1,34 @@
+const session = require("express-session");
+const passport = require("./config/passport");
 const express = require("express");
-const Contact = require("./models/contactModel");
 const cors = require("cors");
 
-
 const app = express();
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: false,
+      httpOnly: true,
+    },
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(cors());
 app.use(express.json());
 
 // routes
+app.use("/auth", require("./routes/authRoutes"));
 app.use("/contacts", require("./routes/contactRoutes"));
 app.use("/tasks", require("./routes/taskRoutes"));
 
-app.get("/test-contacts", async (req, res) => {
-  const contacts = await Contact.find();
-  res.json({
-    count: contacts.length,
-    contacts
-  });
-});
-
-// Swagger 
+// Swagger
 const setupSwagger = require("./swagger");
 setupSwagger(app);
 

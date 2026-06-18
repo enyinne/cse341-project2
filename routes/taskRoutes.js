@@ -1,3 +1,4 @@
+const authenticate = require("../middleware/authenticate");
 const express = require("express");
 const router = express.Router();
 
@@ -76,7 +77,9 @@ router.get("/:id", getTaskById);
  *       201:
  *         description: Task created successfully
  */
-router.post("/", createTask);
+//router.post("/", createTask);
+router.post("/", authenticate, createTask);
+
 
 /**
  * @swagger
@@ -102,7 +105,9 @@ router.post("/", createTask);
  *       404:
  *         description: Task not found
  */
-router.put("/:id", updateTask);
+//router.put("/:id", updateTask);
+router.put("/:id", authenticate, updateTask);
+
 
 /**
  * @swagger
@@ -120,6 +125,7 @@ router.put("/:id", updateTask);
  *       200:
  *         description: Task deleted successfully
  */
-router.delete("/:id", deleteTask);
+//router.delete("/:id", deleteTask);
+router.delete("/:id", authenticate, deleteTask);
 
 module.exports = router;

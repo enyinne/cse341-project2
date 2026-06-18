@@ -9,10 +9,10 @@ const swaggerDefinition = {
     description: "Contacts and Tasks API documentation",
   },
   servers: [
-  {
-    url: "https://cse341-project2-htyh.onrender.com"
-  }
-],
+    {
+      url: "https://cse341-project2-htyh.onrender.com"
+    }
+  ],
 };
 
 const options = {

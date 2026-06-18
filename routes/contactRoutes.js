@@ -1,3 +1,4 @@
+const authenticate = require("../middleware/authenticate");
 const express = require("express");
 const router = express.Router();
 
@@ -84,7 +85,9 @@ router.get("/:id", getContactById);
  *       400:
  *         description: Validation error - required fields missing
  */
-router.post("/", createContact);
+//router.post("/", createContact);
+router.post("/", authenticate, createContact);
+
 
 /**
  * @swagger
@@ -110,7 +113,8 @@ router.post("/", createContact);
  *       404:
  *         description: Contact not found
  */
-router.put("/:id", updateContact);
+//router.put("/:id", updateContact);
+router.put("/:id", authenticate, updateContact);
 
 /**
  * @swagger
@@ -133,6 +137,7 @@ router.put("/:id", updateContact);
  *         description: Server error
 
  */
-router.delete("/:id", deleteContact);
+//router.delete("/:id", deleteContact);
+router.delete("/:id", authenticate, deleteContact);
 
 module.exports = router;
